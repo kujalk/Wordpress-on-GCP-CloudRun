@@ -1,7 +1,9 @@
 # Highly Available Wordpress on GCP CloudRun
 
 ## Architecture
-https://github.com/kujalk/Wordpress-on-GCP-CloudRun/blob/master/Architecture.png
+<kbd>
+  <img src="Architecture.png">
+</kbd>
 
 ## Developer
 Janarthanan Kugathasan
