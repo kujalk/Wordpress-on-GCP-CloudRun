@@ -19,3 +19,7 @@ terraform init
 terraform plan
 terraform apply -auto-approve
 ```
+- To destroy the resources
+```terraform
+terraform destroy -auto-approve
+```
