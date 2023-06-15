@@ -12,6 +12,7 @@ define( 'DB_CHARSET', 'utf8' );
 
 define( 'DB_COLLATE', '' );
 
+//Must for WP-Super cache to work
 define('WP_CACHE', true);
 define('WPCACHEHOME', '/var/www/html/wp-content/plugins/wp-super-cache/');
 

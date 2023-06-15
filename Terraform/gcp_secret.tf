@@ -1,6 +1,6 @@
 resource "google_secret_manager_secret" "secret-basic" {
-  depends_on      = [time_sleep.wait_for_allapis]
-  secret_id = "${var.prefix}-dbsecret-${random_string.random.result}"
+  depends_on = [time_sleep.wait_for_allapis]
+  secret_id  = "${var.prefix}-dbsecret-${random_string.random.result}"
 
   labels = {
     label = "${var.prefix}-dbsecret-${random_string.random.result}"

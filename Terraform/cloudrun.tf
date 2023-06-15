@@ -4,11 +4,14 @@ resource "google_cloud_run_v2_service" "default" {
   ingress  = "INGRESS_TRAFFIC_ALL"
 
   template {
-    service_account = google_service_account.sa.email
-    timeout         = "30s"
+
+    execution_environment            = "EXECUTION_ENVIRONMENT_GEN2"
+    service_account                  = google_service_account.sa.email
+    max_instance_request_concurrency = var.max_concurrency
+    timeout                          = "30s"
     scaling {
-      max_instance_count = 5
-      min_instance_count = 1
+      max_instance_count = var.max_instance_count
+      min_instance_count = var.min_instance_count
     }
 
     vpc_access {
@@ -27,6 +30,20 @@ resource "google_cloud_run_v2_service" "default" {
       image = "us-central1-docker.pkg.dev/${var.project-id}/${var.prefix}-repo/customwordpress:latest"
       ports {
         container_port = 80
+      }
+
+      resources {
+        limits = {
+          # CPU usage limit
+          cpu = var.max_cpu # 1 vCPU
+
+          # Memory usage limit (per container)
+          memory = var.max_memory
+        }
+      }
+      env {
+        name  = "MNT_BUCKET"
+        value = google_storage_bucket.wpbucket.name
       }
       env {
         name  = "DB_NAME"

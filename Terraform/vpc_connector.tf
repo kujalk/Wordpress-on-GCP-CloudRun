@@ -1,6 +1,6 @@
 resource "google_vpc_access_connector" "connector" {
-  depends_on      = [time_sleep.wait_for_allapis]
-  name = "${var.prefix}-connector"
+  depends_on = [time_sleep.wait_for_allapis]
+  name       = "${var.prefix}-connector"
   subnet {
     name = google_compute_subnetwork.vpc-connector.name
   }

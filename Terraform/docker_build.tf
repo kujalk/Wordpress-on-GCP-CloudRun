@@ -11,7 +11,7 @@ locals {
 
 resource "null_resource" "script" {
 
-  depends_on      = [time_sleep.wait_for_allapis,local_file.key_file]
+  depends_on = [time_sleep.wait_for_allapis, local_file.key_file]
   provisioner "local-exec" {
     command = <<EOT
 

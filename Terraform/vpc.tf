@@ -1,5 +1,5 @@
 resource "google_compute_network" "custom-vpc" {
-  depends_on      = [time_sleep.wait_for_allapis]
+  depends_on              = [time_sleep.wait_for_allapis]
   name                    = "${var.prefix}-${random_string.random.result}-vpc" #Added random string, because it not possible to recreate the same vpc name
   auto_create_subnetworks = false
 }
